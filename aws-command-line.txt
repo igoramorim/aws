@@ -1,0 +1,35 @@
+##### S3 #####
+
+// create bucket
+aws s3 mb s3://bucket-name
+
+// list buckets
+aws s3 ls
+
+// list objects inside bucket
+aws s3 ls s3://bucket-name
+
+// delete bucket
+aws s3 rb s3://bucket-name
+
+// upload a file to bucket
+aws s3 cp file.txt s3://bucket-name
+
+// download a file from bucket to the working directory
+aws s3 cp s3://bucket-name/file.txt .
+
+// remove file from bucket
+aws s3 rm s3://bucket-name/file.txt
+
+##### LAMBDA #####
+
+zip -r function.zip lambda_function.py
+aws lambda update-function-code --function-name $function-name --zip-file fileb://function.zip
+
+aws lambda get-function --function-name $function-name
+
+aws lambda get-function --function-name $function-name --query 'Code.Location'
+
+aws lambda update-function-code --function-name $function-name --s3-bucket $bucket --s3-key $bucket-key-file
+
+##############
